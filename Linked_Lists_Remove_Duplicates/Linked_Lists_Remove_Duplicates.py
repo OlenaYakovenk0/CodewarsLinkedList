@@ -4,19 +4,13 @@ class Node():
         self.next = next
 
 def remove_duplicates(head):
-    if not head:
-        return head
-
-    res = Node(head.data)
-    current_node = res
     current = head
-
     while current:
-        if current.data != current_node.data:
-            current_node.next = Node(current.data)
-            current_node = current_node.next
-        current = current.next
-    return res
+        if current.next and current.data == current.next.data:
+            current.next = current.next.next
+        else:
+            current = current.next
+    return head
 
 def stringify(node):
     res = ''
